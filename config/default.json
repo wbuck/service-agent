@@ -1,0 +1,12 @@
+{
+  "Service": {
+    "agent": {
+      "host": "localhost",
+      "port": 9191
+    },
+    "monitor": {
+      "serviceName": "DellUpdate"
+    }
+  }
+}
+
