@@ -1,0 +1,18 @@
+[2017-04-10 2:07:13.624 pm] [ERROR] -> TypeError Cannot read property 'toString' of undefined
+[2017-04-10 2:35:53.767 pm] [ERROR] -> TypeError Cannot read property 'be' of undefined
+[2017-04-10 2:38:01.077 pm] [ERROR] -> ReferenceError res_isJSON is not defined
+[2017-04-10 2:39:17.582 pm] [ERROR] -> TypeError _sinon2.default.assert is not a function
+[2017-04-10 2:43:39.752 pm] [ERROR] -> AssertionError expected 'FakeService' to equal 'FakeService2'
+[2017-04-10 2:43:41.777 pm] [ERROR] -> AssertionError expected 'FakeService' to equal 'FakeService2'
+[2017-04-10 2:44:30.667 pm] [ERROR] -> AssertionError expected 'RUNNING' to equal 'STOPPED'
+[2017-04-10 2:45:19.054 pm] [ERROR] -> AssertionError expected 'RUNNING' to equal 'STOPPED'
+[2017-04-10 2:48:57.894 pm] [ERROR] -> AssertionError expected 'RUNNING' to equal 'RUNN2ING'
+[2017-04-11 9:10:19.175 pm] [ERROR] -> TypeError 
+[2017-04-11 9:10:59.872 pm] [ERROR] -> ChildProcessError Command failed: sc query FakeService
+[2017-04-11 9:11:08.112 pm] [ERROR] -> ChildProcessError Command failed: sc query FakeService
+[2017-04-11 9:12:57.849 pm] [ERROR] -> ChildProcessError Command failed: sc query FakeService
+[2017-04-11 9:13:22.250 pm] [ERROR] -> ChildProcessError Command failed: sc query FakeService
+[2017-04-11 9:14:20.624 pm] [ERROR] -> ChildProcessError Command failed: sc query FakeService
+[2017-04-11 9:15:00.201 pm] [ERROR] -> ChildProcessError Command failed: sc query FakeService
+[2017-04-11 9:15:22.232 pm] [ERROR] -> ChildProcessError Command failed: sc query FakeService
+[2017-04-11 9:15:34.262 pm] [ERROR] -> ChildProcessError Command failed: sc query FakeService

@@ -4,11 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prestart": "babel-node services/svc.js",
-    "start": "npm-run-all --parallel security-check open:src",
-    "open:src": "babel-node app.js",
+    "prestart": "npm-run-all --parallel compile:config compile:logger compile:controller",
+    "start": "npm-run-all --parallel security-check compile:app lint:watch",
+    "compile:app": "nodemon app.js --exec babel-node",
+    "compile:config": "babel-node services/configuration.js",
+    "compile:logger": "babel-node services/logging.js",
+    "compile:controller": "babel-node controllers/serviceController.js",
+    "lint": "esw routes services controllers",
+    "lint:watch": "npm run lint -- --watch",
     "security-check": "nsp check",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha -w test/testSetup.js \"test/**/*.test.js\""
   },
   "repository": {
     "type": "git",
@@ -21,10 +26,15 @@
   },
   "homepage": "https://github.com/wbuck/service-agent#readme",
   "dependencies": {
+    "bluebird": "^3.5.0",
+    "child-process-promise": "^2.2.1",
     "config": "^1.25.1",
     "express": "^4.15.2",
+    "moment": "^2.18.1",
     "node-windows": "latest",
-    "portscanner": "^2.1.1"
+    "path": "^0.12.7",
+    "portscanner": "^2.1.1",
+    "winston": "^2.3.1"
   },
   "devDependencies": {
     "babel-cli": "^6.24.0",
@@ -32,10 +42,16 @@
     "babel-preset-latest": "^6.24.0",
     "babel-register": "^6.24.0",
     "chai": "^3.5.0",
-    "chalk": "^1.1.3",
+    "eslint": "^3.19.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-watch": "^3.0.1",
     "mocha": "^3.2.0",
+    "node-mocks-http": "^1.6.1",
+    "nodemon": "^1.11.0",
     "npm-run-all": "^4.0.2",
     "nsp": "^2.6.3",
-    "path": "^0.12.7"
+    "proxyquire": "^1.7.11",
+    "sinon": "^2.1.0"
   }
 }

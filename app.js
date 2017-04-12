@@ -1,43 +1,37 @@
 import express from 'express';
-import chalk from 'chalk';
-import Service from './services/svc';
 import Configuration from './services/configuration';
 import portScanner from 'portscanner';
+import Logger from './services/logging';
+import path from 'path';
 
+const logger = new Logger( path.join( __dirname, 'logs', 'agent.log' ) );
 const config = new Configuration();
-
-
-
-// Determine if the port supplied by the configuration
-// is already in use.
-portScanner.checkPortStatus(config.port, '127.0.0.1').then( result => {
-
-}).catch(err => {
-
-});
-
-
-
-
-const app = express();
 const port = config.port;
+const app = express();
 
+// Determine if the port supplied by
+// the configuration is already in use.
+portScanner.checkPortStatus( port, '127.0.0.1' ).then( result => {
 
-let service = new Service(config.serviceName);
+    if( result === 'open' ) {
+        throw new Error( `PORT ${config.port} is already in use` );
+    }
 
-const router = express.Router();
-router.route('/state')
-    .get((req, res) => {
-        service.serviceStatus().then(result => {
-            res.json(result);
-        }).catch(err => {
-            res.status(400).send(`Cannot find service [${service.name}]`);
-        });
-    });
-app.use('/', router);
+    const router = require( './routes/serviceRouter' )( logger );
 
-app.listen(port, () => {
-    console.log(chalk.green(`Listening on port ${port}`));
-    console.log(chalk.red(__dirname));
-});
+    app.use( '/service', router );
+
+    app.get( '/', ( req, res ) => {
+        res.send( 'Welcome' );
+    } );
+
+    app.listen( port, () => {
+        logger.log.info( `Listening on port [${port}]` );
+    } );
+
+    return result;
+
+} ).catch( err => {
+    logger.log.error( `${err.name} ${err.message}` );
+} );
 
