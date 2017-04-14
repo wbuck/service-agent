@@ -39,3 +39,5 @@ jspm_packages
 .idea/modules.xml
 .idea/service-agent.iml
 .idea/workspace.xml
+.idea
+.vscode

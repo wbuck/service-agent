@@ -1,12 +1,12 @@
 {
-  "Service": {
-    "agent": {
-      "host": "localhost",
-      "port": 9195
-    },
-    "monitor": {
-      "serviceName": "DellUpdate"
+    "Service": {
+        "agent": {
+            "host": "localhost",
+            "port": 9195,
+            "installDirectory": ""
+        },
+        "monitor": {
+            "serviceName": "DellUpdate"
+        }
     }
-  }
 }
-

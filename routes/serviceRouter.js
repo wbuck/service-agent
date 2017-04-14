@@ -5,8 +5,11 @@ import ServiceController from '../controllers/serviceController';
 module.exports = (logger) => {
     const router = express.Router();
     let controller = new ServiceController(exec, logger);
-    router.route('/status/:name')
+
+    router.route('/:name')
         .get(controller.get);
+    router.route('/:name/:command')
+        .patch(controller.patch);
 
     return router;
 };
